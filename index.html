@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LEGION Systems — AI Intelligence Infrastructure</title>
+<meta name="description" content="LEGION: The world's most comprehensive AI intelligence infrastructure. 520+ API endpoints, 270+ datasets, live incident corpus, signed attestations, Phoenix objects.">
+<meta name="keywords" content="AI security, AI risk, AI attestation, AI incidents, AI benchmarks, LEGION API">
+<link rel="canonical" href="https://legion-api.com">
+<style>
+:root{--bg:#070710;--bg2:#0d0d1e;--bg3:#111128;--border:#1e1e35;--accent:#818cf8;--accent2:#c084fc;--green:#22c55e;--red:#ef4444;--yellow:#f59e0b;--text:#f0f0f0;--muted:#6b7280}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
+a{color:var(--accent);text-decoration:none}
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(7,7,16,.9);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 24px;display:flex;justify-content:space-between;align-items:center;height:56px}
+.nav-logo{font-weight:800;font-size:18px;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.5px}
+.nav-links{display:flex;gap:20px;align-items:center}
+.nav-links a{font-size:13px;color:var(--muted);transition:color .15s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--accent);color:#000!important;padding:7px 16px;border-radius:8px;font-weight:600;font-size:13px}
+/* HERO */
+.hero{text-align:center;padding:80px 20px 60px;background:radial-gradient(ellipse 80% 50% at 50% -10%,rgba(129,140,248,.15),transparent)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;background:rgba(34,197,94,.1);border:1px solid var(--green);color:var(--green);font-size:12px;font-weight:600;margin-bottom:20px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:p 2s infinite}
+@keyframes p{50%{opacity:.2}}
+.hero h1{font-size:clamp(32px,5vw,64px);font-weight:800;line-height:1.05;letter-spacing:-1.5px;margin-bottom:20px}
+.grad{background:linear-gradient(135deg,var(--accent),var(--accent2),#f472b6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:clamp(15px,2vw,18px);color:var(--muted);max-width:580px;margin:0 auto 32px;line-height:1.6}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:13px 28px;border-radius:10px;background:var(--accent);color:#000;font-weight:700;font-size:15px;transition:all .15s}
+.btn-primary:hover{background:#6366f1;color:#fff}
+.btn-ghost{padding:13px 28px;border-radius:10px;border:1px solid var(--border);color:var(--muted);font-size:15px;transition:all .15s}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+/* STATS */
+.stats{display:flex;gap:0;justify-content:center;margin:50px 0;background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.stat{flex:1;padding:24px;text-align:center;border-right:1px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-v{font-size:28px;font-weight:800;color:var(--accent)}
+.stat-l{font-size:12px;color:var(--muted);margin-top:4px;text-transform:uppercase}
+@media(max-width:600px){.stats{flex-wrap:wrap}.stat{min-width:50%;border-right:1px solid var(--border)}}
+/* SECTIONS */
+.section{padding:70px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
+.section-title{font-size:clamp(24px,3vw,40px);font-weight:700;line-height:1.15;margin-bottom:14px}
+.section-sub{font-size:16px;color:var(--muted);max-width:560px;line-height:1.6;margin-bottom:40px}
+/* API GRID */
+.api-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.api-card{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;transition:border-color .15s}
+.api-card:hover{border-color:var(--accent)}
+.api-method{font-size:10px;font-weight:700;padding:2px 7px;border-radius:5px;background:rgba(129,140,248,.1);color:var(--accent);margin-bottom:8px;display:inline-block}
+.api-route{font-family:monospace;font-size:14px;font-weight:600;margin-bottom:5px}
+.api-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.api-new{font-size:10px;padding:1px 6px;border-radius:5px;background:rgba(34,197,94,.15);color:var(--green);margin-left:6px;font-weight:600}
+/* TOOLS GRID */
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.tool-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px;transition:all .15s;display:flex;flex-direction:column}
+.tool-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.tool-icon{font-size:28px;margin-bottom:12px}
+.tool-name{font-size:16px;font-weight:700;margin-bottom:6px}
+.tool-desc{font-size:13px;color:var(--muted);line-height:1.5;flex:1;margin-bottom:12px}
+.tool-link{font-size:12px;color:var(--accent);display:flex;align-items:center;gap:4px}
+/* DATASETS */
+.ds-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:10px}
+.ds-card{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px}
+.ds-name{font-family:monospace;font-size:12px;color:var(--accent);margin-bottom:4px}
+.ds-count{font-size:11px;color:var(--muted)}
+.ds-badge{font-size:10px;padding:1px 6px;border-radius:5px}
+.gated{background:rgba(245,158,11,.1);color:var(--yellow)}
+.public{background:rgba(34,197,94,.1);color:var(--green)}
+/* AGENTS */
+.agent-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:10px}
+.agent-item{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:12px;display:flex;align-items:flex-start;gap:10px}
+.agent-dot{width:8px;height:8px;border-radius:50%;background:var(--green);margin-top:5px;flex-shrink:0;animation:p 3s infinite}
+.agent-name{font-size:13px;font-weight:600;margin-bottom:2px}
+.agent-desc{font-size:12px;color:var(--muted)}
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.price-card{background:var(--bg2);border:1px solid var(--border);border-radius:14px;padding:24px}
+.price-card.featured{border-color:var(--accent);background:linear-gradient(135deg,rgba(129,140,248,.05),var(--bg2))}
+.price-name{font-size:14px;font-weight:600;color:var(--muted);margin-bottom:8px}
+.price-amount{font-size:36px;font-weight:800;margin-bottom:4px}
+.price-period{font-size:13px;color:var(--muted);margin-bottom:16px}
+.price-features{list-style:none;font-size:13px;color:var(--muted);line-height:2}
+.price-features li::before{content:"✓ ";color:var(--green)}
+.price-btn{display:block;text-align:center;margin-top:16px;padding:10px;border-radius:8px;font-weight:600;font-size:14px;background:var(--accent);color:#000;transition:background .15s}
+.price-btn:hover{background:#6366f1;color:#fff}
+/* CTA BANNER */
+.cta-banner{background:linear-gradient(135deg,rgba(129,140,248,.1),rgba(192,132,252,.05));border:1px solid var(--border);border-radius:16px;padding:50px 30px;text-align:center;margin:40px 0}
+.cta-banner h2{font-size:clamp(22px,3vw,36px);font-weight:700;margin-bottom:12px}
+.cta-banner p{color:var(--muted);margin-bottom:24px;font-size:15px}
+/* FOOTER */
+footer{background:var(--bg2);border-top:1px solid var(--border);padding:40px 24px;display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;font-size:13px;color:var(--muted)}
+.footer-logo{font-weight:800;font-size:16px;color:var(--text);margin-bottom:6px}
+.footer-col h4{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;margin-bottom:10px;color:var(--text)}
+.footer-col a{display:block;margin-bottom:6px;color:var(--muted);transition:color .15s}
+.footer-col a:hover{color:var(--accent)}
+</style>
+</head>
+<body>
+
+<nav>
+<div class="nav-logo">⚡ LEGION</div>
+<div class="nav-links">
+<a href="#api">API</a>
+<a href="#tools">Tools</a>
+<a href="#datasets">Datasets</a>
+<a href="#pricing">Pricing</a>
+<a href="https://api.legion-api.com/docs">Docs</a>
+<a href="https://gemmo.gumroad.com/l/ngtmw" class="nav-cta">Get API Key</a>
+</div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+<div class="hero-badge"><div class="dot"></div>524 Live API Endpoints · 270+ Datasets · 14,000+ Incidents</div>
+<h1>The <span class="grad">AI Intelligence</span><br>Infrastructure Layer</h1>
+<p>Signed attestations, live incident corpus, risk matrices, provider scoring, sovereign compute tracking — everything your AI stack needs to be verifiable.</p>
+<div class="hero-ctas">
+<a href="https://gemmo.gumroad.com/l/ngtmw" class="btn-primary">Get API Key — €29/mo</a>
+<a href="https://api.legion-api.com/docs" class="btn-ghost">Explore API →</a>
+</div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+<div class="stat"><div class="stat-v">524+</div><div class="stat-l">API Routes</div></div>
+<div class="stat"><div class="stat-v">270+</div><div class="stat-l">HF Datasets</div></div>
+<div class="stat"><div class="stat-v">14,345</div><div class="stat-l">Incidents</div></div>
+<div class="stat"><div class="stat-v">280+</div><div class="stat-l">Live Agents</div></div>
+<div class="stat"><div class="stat-v">Ed25519</div><div class="stat-l">Signed Attestations</div></div>
+</div>
+
+<!-- API SECTION -->
+<div class="section" id="api">
+<div class="section-inner">
+<div class="section-label">Core API</div>
+<div class="section-title">Everything AI. One API.</div>
+<div class="section-sub">Risk scores, signed attestations, incident corpus, market intelligence — coverage-normalized and claim-bounded.</div>
+<div class="api-grid">
+<div class="api-card"><div class="api-method">GET</div><div class="api-route">/attest</div><div class="api-desc">Ed25519 signed attestation for any AI provider. Receipt chain. Verifiable.</div></div>
+<div class="api-card"><div class="api-method">GET</div><div class="api-route">/incidents</div><div class="api-desc">14,345 classified AI security incidents. Filter by provider, severity, date.</div></div>
+<div class="api-card"><div class="api-method">GET</div><div class="api-route">/risk-matrix</div><div class="api-desc">Composite risk scores. Coverage-adjusted. Per-provider breakdown.</div></div>
+<div class="api-card"><div class="api-method">GET</div><div class="api-route">/decision-support</div><div class="api-desc">PROCEED / REVIEW / HOLD verdict for provider selection. Not procurement advice.</div></div>
+<div class="api-card"><div class="api-method">GET</div><div class="api-route">/valuation<span class="api-new">NEW</span></div><div class="api-desc">AI company valuations. Funding rounds. Revenue estimates.</div></div>
+<div class="api-card"><div class="api-method">GET</div><div class="api-route">/sovereign-compute<span class="api-new">NEW</span></div><div class="api-desc">National AI compute programs. Budget, eFlops, strategy by country.</div></div>
+<div class="api-card"><div class="api-method">GET</div><div class="api-route">/climate-compute<span class="api-new">NEW</span></div><div class="api-desc">AI model CO2 training cost. Inference carbon per query. Water usage.</div></div>
+<div class="api-card"><div class="api-method">GET</div><div class="api-route">/salary-intel<span class="api-new">NEW</span></div><div class="api-desc">AI role compensation by company, level, region. Base + total comp.</div></div>
+<div class="api-card"><div class="api-method">GET</div><div class="api-route">/context-race</div><div class="api-desc">Context window race. Who leads. By provider and model.</div></div>
+<div class="api-card"><div class="api-method">GET</div><div class="api-route">/workforce-index</div><div class="api-desc">AI job market. Monthly postings, YoY growth, median salary by region.</div></div>
+<div class="api-card"><div class="api-method">GET</div><div class="api-route">/defense-tracker</div><div class="api-desc">AI in defense contracts. Agency, value, provider tech stack.</div></div>
+<div class="api-card"><div class="api-method">GET</div><div class="api-route">/cortex/signals</div><div class="api-desc">Live Cortex neuron signals. Cross-domain emerging topics. TF-IDF scored.</div></div>
+</div>
+<div style="margin-top:14px;font-size:13px;color:var(--muted)">+ 512 more endpoints · <a href="https://api.legion-api.com/docs" style="color:var(--accent)">Full docs →</a></div>
+</div></div>
+
+<!-- TOOLS SECTION -->
+<div class="section" id="tools" style="background:var(--bg2)">
+<div class="section-inner">
+<div class="section-label">Free Tools</div>
+<div class="section-title">AI Intelligence Tools</div>
+<div class="section-sub">Open tools powered by LEGION data. No signup required.</div>
+<div class="tools-grid">
+<div class="tool-card"><div class="tool-icon">🛡️</div><div class="tool-name">AI Vendor Audit Tool</div><div class="tool-desc">Full risk assessment in 60s. LEGION-signed attestation, compliance checklist, incident history.</div><a href="https://legion33shadow.github.io/ai-audit-tool/" class="tool-link">Open tool →</a></div>
+<div class="tool-card"><div class="tool-icon">📊</div><div class="tool-name">Risk Dashboard</div><div class="tool-desc">Live risk matrix for 6 AI providers. Critical incidents, trust verdicts, corpus stats.</div><a href="https://legion33shadow.github.io/risk-dashboard/" class="tool-link">Open tool →</a></div>
+<div class="tool-card"><div class="tool-icon">💻</div><div class="tool-name">AI Model Comparison</div><div class="tool-desc">Compare 14 models: pricing, MMLU, HumanEval, LEGION risk scores, context windows.</div><a href="https://legion33shadow.github.io/ai-model-compare/" class="tool-link">Open tool →</a></div>
+<div class="tool-card"><div class="tool-icon">⏱️</div><div class="tool-name">SLA Tracker</div><div class="tool-desc">Provider uptime vs promised SLA. Breach detection. Live status. 30-day incident window.</div><a href="https://legion33shadow.github.io/ai-sla-tracker/" class="tool-link">Open tool →</a></div>
+<div class="tool-card"><div class="tool-icon">💰</div><div class="tool-name">GPU Compute Arbitrage</div><div class="tool-desc">Find cheapest GPU across RunPod, Vast.ai, Lambda, CoreWeave. Filter by workload type.</div><a href="https://legion33shadow.github.io/compute-arbitrage-tool/" class="tool-link">Open tool →</a></div>
+<div class="tool-card"><div class="tool-icon">🔮</div><div class="tool-name">AI Model Picker</div><div class="tool-desc">Best model for your task. 12 use cases × 9 models. Real benchmarks + price + risk.</div><a href="https://legion33shadow.github.io/ai-model-picker/" class="tool-link">Open tool →</a></div>
+<div class="tool-card"><div class="tool-icon">📅</div><div class="tool-name">Regulatory Calendar</div><div class="tool-desc">EU AI Act, NIST RMF, UK AI Safety deadlines. Interactive. Never miss compliance.</div><a href="https://legion33shadow.github.io/ai-regulatory-calendar/" class="tool-link">Open tool →</a></div>
+<div class="tool-card"><div class="tool-icon">🏥</div><div class="tool-name">Insurance Calculator</div><div class="tool-desc">Estimate AI cyber insurance premium. Powered by LEGION actuarial corpus. 14K incidents.</div><a href="https://legion33shadow.github.io/ai-insurance-calc/" class="tool-link">Open tool →</a></div>
+<div class="tool-card"><div class="tool-icon">⚡</div><div class="tool-name">LEGION Status Page</div><div class="tool-desc">Live health of LEGION infrastructure. API routes, provider verdicts, Phoenix chain.</div><a href="https://legion33shadow.github.io/legion-status-page/" class="tool-link">Open tool →</a></div>
+<div class="tool-card"><div class="tool-icon">🔗</div><div class="tool-name">Embed Widget</div><div class="tool-desc">Add LEGION trust badges to your website. Configure provider, style, window. Free.</div><a href="https://legion33shadow.github.io/legion-embed-widget/" class="tool-link">Open tool →</a></div>
+<div class="tool-card"><div class="tool-icon">🏷️</div><div class="tool-name">JSON Formatter</div><div class="tool-desc">Format, validate, minify JSON. Handle API responses instantly.</div><a href="https://legion33shadow.github.io/json-formatter/" class="tool-link">Open tool →</a></div>
+<div class="tool-card"><div class="tool-icon">🆔</div><div class="tool-name">UUID Generator</div><div class="tool-desc">UUID v4, ULID, NanoID. Bulk generation. Validator. Format options.</div><a href="https://legion33shadow.github.io/uuid-gen/" class="tool-link">Open tool →</a></div>
+</div>
+</div></div>
+
+<!-- DATASETS SECTION -->
+<div class="section" id="datasets">
+<div class="section-inner">
+<div class="section-label">HuggingFace Datasets</div>
+<div class="section-title">270+ Research Datasets</div>
+<div class="section-sub">The largest public collection of AI intelligence datasets. Live, updated daily by 280+ agents.</div>
+<div class="ds-grid">
+<div class="ds-card"><div class="ds-name">ai-agent-security-incidents</div><div class="ds-count">14,345 classified incidents</div><span class="ds-badge public">PUBLIC</span></div>
+<div class="ds-card"><div class="ds-name">phoenix-objects</div><div class="ds-count">109 signed objects · #1 HF</div><span class="ds-badge public">PUBLIC</span></div>
+<div class="ds-card"><div class="ds-name">ai-risk-matrix-2026</div><div class="ds-count">Live provider scoring</div><span class="ds-badge public">PUBLIC</span></div>
+<div class="ds-card"><div class="ds-name">ai-reg-calendar-2026</div><div class="ds-count">Global deadline tracker</div><span class="ds-badge public">PUBLIC</span></div>
+<div class="ds-card"><div class="ds-name">ai-sovereign-compute-2026</div><div class="ds-count">12 national programs</div><span class="ds-badge gated">GATED</span></div>
+<div class="ds-card"><div class="ds-name">ai-climate-compute-2026</div><div class="ds-count">CO2 per model training</div><span class="ds-badge gated">GATED</span></div>
+<div class="ds-card"><div class="ds-name">ai-salary-intel-2026</div><div class="ds-count">AI role compensation data</div><span class="ds-badge gated">GATED</span></div>
+<div class="ds-card"><div class="ds-name">ai-valuation-tracker-2026</div><div class="ds-count">Funding rounds & valuations</div><span class="ds-badge gated">GATED</span></div>
+<div class="ds-card"><div class="ds-name">ai-ma-tracker-2026</div><div class="ds-count">M&A deals · $171B tracked</div><span class="ds-badge gated">GATED</span></div>
+<div class="ds-card"><div class="ds-name">ai-patent-landscape-2026</div><div class="ds-count">Patent race by company/domain</div><span class="ds-badge gated">GATED</span></div>
+<div class="ds-card"><div class="ds-name">ai-geopolitics-2026</div><div class="ds-count">Export controls · alliances</div><span class="ds-badge gated">GATED</span></div>
+<div class="ds-card"><div class="ds-name">+ 259 more datasets</div><div class="ds-count">Request access on HuggingFace</div><span class="ds-badge gated">GATED</span></div>
+</div>
+<div style="margin-top:16px"><a href="https://huggingface.co/gemmozero" style="color:var(--accent);font-size:14px">View all on HuggingFace →</a></div>
+</div></div>
+
+<!-- AGENTS -->
+<div class="section" style="background:var(--bg2)">
+<div class="section-inner">
+<div class="section-label">Intelligence Network</div>
+<div class="section-title">280+ Live Agents</div>
+<div class="section-sub">Running 24/7. Feeding 270+ datasets. Powering every API endpoint.</div>
+<div class="agent-list">
+<div class="agent-item"><div class="agent-dot"></div><div><div class="agent-name">agent-incidents</div><div class="agent-desc">AI security incident collection — 14K+ classified</div></div></div>
+<div class="agent-item"><div class="agent-dot"></div><div><div class="agent-name">agent-legal-cases</div><div class="agent-desc">AI court cases globally — CourtListener + RSS</div></div></div>
+<div class="agent-item"><div class="agent-dot"></div><div><div class="agent-name">agent-compute-arb</div><div class="agent-desc">GPU price arbitrage — 5 providers × 16 GPUs</div></div></div>
+<div class="agent-item"><div class="agent-dot"></div><div><div class="agent-name">agent-patent-race</div><div class="agent-desc">AI patent filings — ArXiv + Lens.org</div></div></div>
+<div class="agent-item"><div class="agent-dot"></div><div><div class="agent-name">agent-darkweb-intel</div><div class="agent-desc">Breach signals — HIBP + CISA KEV + 6 feeds</div></div></div>
+<div class="agent-item"><div class="agent-dot"></div><div><div class="agent-name">agent-biotech-ai</div><div class="agent-desc">AI in drug discovery — ClinicalTrials.gov + ArXiv</div></div></div>
+<div class="agent-item"><div class="agent-dot"></div><div><div class="agent-name">agent-climate-compute</div><div class="agent-desc">AI energy footprint — CO2 per training run</div></div></div>
+<div class="agent-item"><div class="agent-dot"></div><div><div class="agent-name">legion-orchestrator</div><div class="agent-desc">Master super-agent — coordinates all 280 agents</div></div></div>
+<div class="agent-item"><div class="agent-dot"></div><div><div class="agent-name">legion-sentinel</div><div class="agent-desc">Provider health monitoring — 24/7 watchdog</div></div></div>
+<div class="agent-item"><div class="agent-dot"></div><div><div class="agent-name">legion-synthesizer</div><div class="agent-desc">Weekly intelligence briefs → HuggingFace</div></div></div>
+<div class="agent-item"><div class="agent-dot"></div><div><div class="agent-name">+ 270 more agents</div><div class="agent-desc">Running crons 04:00–23:00 daily</div></div></div>
+</div>
+</div></div>
+
+<!-- PRICING -->
+<div class="section" id="pricing">
+<div class="section-inner">
+<div class="section-label">Pricing</div>
+<div class="section-title">Simple, Usage-Based</div>
+<div class="pricing-grid">
+<div class="price-card">
+<div class="price-name">Free</div>
+<div class="price-amount">€0</div>
+<div class="price-period">Forever</div>
+<ul class="price-features">
+<li>Public endpoints</li>
+<li>5 req/min rate limit</li>
+<li>Public datasets</li>
+<li>GitHub Pages tools</li>
+</ul>
+<a href="https://api.legion-api.com/docs" class="price-btn" style="background:var(--bg3);color:var(--text)">Start free →</a>
+</div>
+<div class="price-card featured">
+<div class="price-name">API Pro</div>
+<div class="price-amount">€29</div>
+<div class="price-period">per month</div>
+<ul class="price-features">
+<li>All 524+ endpoints</li>
+<li>100 req/min</li>
+<li>Gated datasets access</li>
+<li>Signed attestations</li>
+<li>Webhook alerts</li>
+</ul>
+<a href="https://gemmo.gumroad.com/l/ngtmw" class="price-btn">Get API Key →</a>
+</div>
+<div class="price-card">
+<div class="price-name">AISI Premium</div>
+<div class="price-amount">€299</div>
+<div class="price-period">one-time</div>
+<ul class="price-features">
+<li>Full incident corpus</li>
+<li>All 270+ datasets</li>
+<li>Trust certificates</li>
+<li>Phoenix chain access</li>
+<li>Cortex signals</li>
+</ul>
+<a href="https://gemmo.gumroad.com/l/mdevxu" class="price-btn" style="background:var(--bg3);color:var(--text)">Get access →</a>
+</div>
+</div>
+</div></div>
+
+<!-- CTA -->
+<div class="section" style="padding:40px 20px">
+<div class="section-inner">
+<div class="cta-banner">
+<h2>The AI layer that <span class="grad">verifies itself</span></h2>
+<p>Every claim is signed. Every score is sourced. Every incident is classified.<br>LEGION is the trust layer your AI stack is missing.</p>
+<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+<a href="https://gemmo.gumroad.com/l/ngtmw" class="btn-primary">Start with Pro — €29/mo</a>
+<a href="https://huggingface.co/gemmozero/phoenix-objects" class="btn-ghost">Verify Phoenix →</a>
+</div>
+</div>
+</div></div>
+
+<footer>
+<div>
+<div class="footer-logo">⚡ LEGION Systems</div>
+<div style="font-size:12px;max-width:220px;line-height:1.5">AI Intelligence Infrastructure. Built by a solo founder in Cyprus. Running since 2026.</div>
+</div>
+<div class="footer-col">
+<h4>API</h4>
+<a href="https://api.legion-api.com/docs">Documentation</a>
+<a href="https://api.legion-api.com/health">API Status</a>
+<a href="https://api.legion-api.com/attest?subject=openai&days=30">Live Attestation</a>
+<a href="https://huggingface.co/gemmozero">HuggingFace</a>
+</div>
+<div class="footer-col">
+<h4>Tools</h4>
+<a href="https://legion33shadow.github.io/ai-audit-tool/">AI Vendor Audit</a>
+<a href="https://legion33shadow.github.io/ai-model-compare/">Model Comparison</a>
+<a href="https://legion33shadow.github.io/compute-arbitrage-tool/">GPU Arbitrage</a>
+<a href="https://legion33shadow.github.io/ai-regulatory-calendar/">Reg Calendar</a>
+</div>
+<div class="footer-col">
+<h4>Products</h4>
+<a href="https://gemmo.gumroad.com/l/ngtmw">API Pro — €29/mo</a>
+<a href="https://gemmo.gumroad.com/l/mdevxu">AISI Premium — €299</a>
+<a href="https://gemmo.gumroad.com/l/jxsyyq">Trust Certificate — €29</a>
+<a href="https://gemmo.gumroad.com/l/gehum">AI Risk Brief — €19</a>
+</div>
+<div style="width:100%;border-top:1px solid var(--border);margin-top:20px;padding-top:16px;font-size:11px;color:var(--muted)">
+© 2026 LEGION Systems · Not investment advice · Not legal advice · Verify independently
+</div>
+</footer>
+</body></html>
